@@ -46,4 +46,26 @@ The program processes the input data line by line. One line in batch data will t
 
 The program processes the stream data also line by line. It will read one line of the input, check for friendship, write one line of output, and update the network. This program checks the 1st, 2nd, and 4th degree friendship at same time, which is not suitable for the production. For the faster processing, the program should only hanld one case, and network update should be also handled separately.
 
-To check the friendship within n degrees, 
+To check the friendship within n degrees, the program will:
+
+1. Check whether either of two sides of transaction are new id by check whether the id is a key of the network. If yes, transaction is unverified. Otherwise, go next;
+
+2. Check whether two sides of transaction are first degree friend to each other by check whether one id is in another's friend 'set'. If yes, transaction is trusted. Otherwise, go next;
+
+For 2 and more degree:
+
+3. Store each side of id(s) in a 'set';
+
+4. Choose the side with less ids, and get next degree friends;
+
+5. Remove the friends appeared in previous gedrees;
+
+6. Check whether there is intersection between two sides. If yes, it is trusted. Otherwise, go to step 4.
+
+During these steps, it is unverified under these conditions:
+
+* The maximum degree is reached;
+
+* No more new friend is gotten from next degree.
+
+During the reading data, error logs were maintained in early versions. However, it was removed for cleaner fold structure. The program will not read the multiline text in the message filed at this stage. It may be considered for the future work becasue the text may contain important information. Time-stamp is neither saved, which is a big regret. Extra features cannot be engineered before deadline, which is even a bigger one. 
