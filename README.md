@@ -60,7 +60,7 @@ For 2 and more degree:
 
 5. Remove the friends appeared in previous gedrees;
 
-6. Check whether there is intersection between two sides. If yes, it is trusted. Otherwise, go to step 4.
+6. Check whether there is intersection between two sides. If yes, it is trusted. Otherwise, go to step 2.
 
 During these steps, it is unverified under these conditions:
 
